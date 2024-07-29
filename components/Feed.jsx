@@ -6,7 +6,6 @@ const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
       {data.map((post) => {
-        console.log(post);
         return (
           <PromptCard
             key={post.id}
@@ -31,6 +30,7 @@ const Feed = () => {
     );
     const data = await res.json();
     setPosts(data);
+    console.log(data);
   };
   const handleTagClick = (tag) => {
     handleSearchChange(tag);
@@ -41,6 +41,7 @@ const Feed = () => {
       const res = await fetch("api/prompt");
       const data = await res.json();
       setPosts(data);
+      console.log(data);
     };
     fetchPosts();
     setInterval(fetchPosts, 10000);
