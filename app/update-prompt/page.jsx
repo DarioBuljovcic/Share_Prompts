@@ -45,7 +45,7 @@ const EditPrompt = () => {
     if (promptId) getPromptDetails();
   }, [promptId]);
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Form
         type="Edit"
         post={post}
@@ -56,5 +56,12 @@ const EditPrompt = () => {
     </Suspense>
   );
 };
+const Edit = () => {
+  return (
+    <Suspense>
+      <EditPrompt />
+    </Suspense>
+  );
+};
 
-export default EditPrompt;
+export default Edit;
