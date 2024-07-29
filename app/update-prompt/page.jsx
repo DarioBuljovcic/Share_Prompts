@@ -1,9 +1,8 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
-import { Suspense } from "react/cjs/react.production.min";
 
 const EditPrompt = () => {
   const router = useRouter();
