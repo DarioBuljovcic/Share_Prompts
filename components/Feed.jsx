@@ -42,6 +42,7 @@ const Feed = () => {
       const data = await res.json();
       setPosts(data);
     };
+    fetchPosts();
     setInterval(fetchPosts, 10000);
   }, []);
   return (
