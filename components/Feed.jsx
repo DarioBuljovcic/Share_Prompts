@@ -38,12 +38,12 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/prompt");
+      const res = await fetch(`/api/prompt/search/${" "}`);
       const data = await res.json();
       setPosts(data);
     };
     fetchPosts();
-    // setInterval(fetchPosts, 10000);
+    setInterval(fetchPosts, 10000);
   }, []);
   return (
     <section className="feed">
