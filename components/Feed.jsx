@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
+import { useSession } from "next-auth/react";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -21,6 +22,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
+  const { data: session } = useSession();
 
   const handleSearchChange = async (text) => {
     setSearchText(text);
@@ -30,7 +32,6 @@ const Feed = () => {
     );
     const data = await res.json();
     setPosts(data);
-    console.log(data);
   };
   const handleTagClick = (tag) => {
     handleSearchChange(tag);
@@ -56,7 +57,13 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList data={posts} handleTagClick={handleTagClick} />
+      {(session && (
+        <PromptCardList data={posts} handleTagClick={handleTagClick} />
+      )) || (
+        <div className="font-satoshi mt-12 text-gray-500">
+          You need to login to see the prompts
+        </div>
+      )}
     </section>
   );
 };
