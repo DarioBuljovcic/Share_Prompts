@@ -11,7 +11,6 @@ const ProfilePage = ({ params }) => {
   const username = searchParams.get("username");
   useEffect(() => {
     const fetchPosts = async () => {
-      console.log(params.id);
       const res2 = await fetch(`/api/users/${params.id}/posts`);
       const data = await res2.json();
       setPosts(data);

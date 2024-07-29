@@ -5,9 +5,16 @@ import PromptCard from "./PromptCard";
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post) => (
-        <PromptCard key={post.id} post={post} handleTagClick={handleTagClick} />
-      ))}
+      {data.map((post) => {
+        console.log(post);
+        return (
+          <PromptCard
+            key={post.id}
+            post={post}
+            handleTagClick={handleTagClick}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -26,7 +33,6 @@ const Feed = () => {
     setPosts(data);
   };
   const handleTagClick = (tag) => {
-    console.log(tag);
     handleSearchChange(tag);
   };
 
@@ -36,7 +42,7 @@ const Feed = () => {
       const data = await res.json();
       setPosts(data);
     };
-    fetchPosts();
+    setInterval(fetchPosts, 10000);
   }, []);
   return (
     <section className="feed">
