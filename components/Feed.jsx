@@ -26,7 +26,7 @@ const Feed = () => {
     setSearchText(text);
 
     const res = await fetch(
-      text === "" ? `/api/prompt/` : `/api/prompt/search/${text}`
+      text === "" ? `/api/prompt` : `/api/prompt/search/${text}`
     );
     const data = await res.json();
     setPosts(data);
@@ -38,7 +38,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/prompt/");
+      const res = await fetch("/api/prompt");
       const data = await res.json();
       setPosts(data);
     };
