@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
+import { Suspense } from "react/cjs/react.production.min";
 
 const EditPrompt = () => {
   const router = useRouter();
@@ -45,13 +46,15 @@ const EditPrompt = () => {
     if (promptId) getPromptDetails();
   }, [promptId]);
   return (
-    <Form
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      isSubmiting={isSubmiting}
-      handleSubmit={updatePrompt}
-    />
+    <Suspense>
+      <Form
+        type="Edit"
+        post={post}
+        setPost={setPost}
+        isSubmiting={isSubmiting}
+        handleSubmit={updatePrompt}
+      />
+    </Suspense>
   );
 };
 
