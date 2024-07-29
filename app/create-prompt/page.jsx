@@ -23,7 +23,6 @@ const CreatePrompt = () => {
         }),
       });
       if (res.ok) {
-        console.log("This??");
         router.push("/");
       }
     } catch (error) {
