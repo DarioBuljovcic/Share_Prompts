@@ -1,6 +1,5 @@
 import Link from "next/link";
-import React from "react";
-import { Suspense } from "react/cjs/react.production.min";
+import React, { Suspense } from "react";
 
 const Form = ({ type, post, setPost, isSubmiting, handleSubmit }) => {
   return (
